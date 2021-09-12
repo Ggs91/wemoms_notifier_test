@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_085520) do
+ActiveRecord::Schema.define(version: 2021_09_12_212816) do
+
+  create_table "notifications", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "resource_type"
+    t.integer "resource_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["resource_type", "resource_id"], name: "index_notifications_on_resource"
+    t.index ["user_id"], name: "index_notifications_on_user_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "description"
@@ -27,5 +37,6 @@ ActiveRecord::Schema.define(version: 2021_03_26_085520) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "notifications", "users"
   add_foreign_key "posts", "users"
 end
