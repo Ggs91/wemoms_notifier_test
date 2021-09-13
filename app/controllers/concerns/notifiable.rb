@@ -7,7 +7,6 @@ module Notifiable
   end
 
   def notify_creation
-    p "NOTIF SEND"
     if self.respond_to? :recipients_ids
       NotificationSenderJob.perform_later(self.id, self.class.name)
     end
