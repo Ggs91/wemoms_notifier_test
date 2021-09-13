@@ -7,6 +7,8 @@ gem 'factory_bot_rails'
 gem 'faker'
 gem 'kaminari'
 gem 'pry-rails'
+gem 'sidekiq'
+gem 'sinatra'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
