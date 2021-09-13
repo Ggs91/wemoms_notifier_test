@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_12_212816) do
+ActiveRecord::Schema.define(version: 2021_09_13_155800) do
 
   create_table "notifications", force: :cascade do |t|
     t.integer "user_id", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_212816) do
     t.integer "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.datetime "read"
     t.index ["resource_type", "resource_id"], name: "index_notifications_on_resource"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -27,6 +28,9 @@ ActiveRecord::Schema.define(version: 2021_09_12_212816) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "notifications_sent", default: 0, null: false
+    t.integer "notifications_read", default: 0, null: false
+    t.datetime "read"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
