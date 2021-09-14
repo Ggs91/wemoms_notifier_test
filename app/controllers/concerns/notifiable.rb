@@ -6,6 +6,13 @@ module Notifiable
     after_commit :notify_creation
   end
 
+  def update_sent_notifications_metrics(nb_of_notifications_sent)
+    self.update(notifications_sent: nb_of_notifications_sent)
+  end
+
+  def update_opened_notifications_metrics(nb_of_notifications_opened)
+    self.update(notifications_opened: nb_of_notifications_opened)
+  end
   private
 
   def notify_creation
