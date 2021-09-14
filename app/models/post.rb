@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-  include Notifiable
+  include Notifier::Resource
 
   belongs_to :user
   validates_presence_of :description, message: "Description must be present"
