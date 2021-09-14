@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_155800) do
     t.integer "resource_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.datetime "read"
+    t.datetime "opened_at"
     t.index ["resource_type", "resource_id"], name: "index_notifications_on_resource"
     t.index ["user_id"], name: "index_notifications_on_user_id"
   end
@@ -29,8 +29,7 @@ ActiveRecord::Schema.define(version: 2021_09_13_155800) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "notifications_sent", default: 0, null: false
-    t.integer "notifications_read", default: 0, null: false
-    t.datetime "read"
+    t.integer "notifications_opened", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
