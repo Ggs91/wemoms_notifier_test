@@ -10,7 +10,7 @@ namespace :notifications do
   desc "update number of notifications sent for each resource"
   task :notifications_sent_count, [:resource_type] => [:environment] do |task, args|
     args[:resource_type].constantize.all.each do |resource|
-      nb_of_notifications_sent = Notifier.notifications_sent_count(resource)
+      nb_of_notifications_sent = Notifier::Metrics.notifications_sent_count(resource)
       resource.update_sent_notifications_metrics(nb_of_notifications_sent)
     end
   end
@@ -18,7 +18,7 @@ namespace :notifications do
   desc "update number of notifications opened for each resource"
   task :notifications_opened_count, [:resource_type] => [:environment] do |task, args|
     args[:resource_type].constantize.all.each do |resource|
-      nb_of_notifications_opened = Notifier.notifications_opened_count(resource)
+      nb_of_notifications_opened = Notifier::Metrics.notifications_opened_count(resource)
       resource.update_opened_notifications_metrics(nb_of_notifications_opened)
     end
   end
