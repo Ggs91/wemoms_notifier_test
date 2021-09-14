@@ -4,7 +4,7 @@ class NotificationSenderJob < ApplicationJob
 
   def perform(resource_id, resource_type)
     resource = find_resource(resource_id, resource_type)
-    Notifier.notify(resource)
+    Notifier::Notifiable.notify(resource)
   end
 
   private
