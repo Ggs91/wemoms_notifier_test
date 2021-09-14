@@ -6,6 +6,8 @@ module Notifiable
     after_commit :notify_creation
   end
 
+  private
+
   def notify_creation
     if self.respond_to? :recipients_ids
       NotificationSenderJob.perform_later(self.id, self.class.name)
