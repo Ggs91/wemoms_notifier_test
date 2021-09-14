@@ -13,6 +13,7 @@ module Notifiable
   def update_opened_notifications_metrics(nb_of_notifications_opened)
     self.update(notifications_opened: nb_of_notifications_opened)
   end
+
   private
 
   def notify_creation
